@@ -1,0 +1,36 @@
+USE Proyecto3ra
+GO
+
+IF OBJECT_ID('SP_VALIDACION_SERVICIO')IS NOT NULL
+	DROP PROCEDURE  SP_VALIDACION_SERVICIO
+GO
+
+CREATE PROCEDURE SP_VALIDACION_SERVICIO
+(
+@num_medidor int
+
+
+)AS
+BEGIN
+	SELECT   num_medidor, FK_CURP_Cliente, tipo_servicio
+		FROM	Servicio
+		WHERE num_medidor = @num_medidor;
+		END
+GO
+
+
+
+IF OBJECT_ID('SP_VALIDACION_SERVICIO_TIPO')IS NOT NULL
+	DROP PROCEDURE  SP_VALIDACION_SERVICIO_TIPO
+GO
+
+CREATE PROCEDURE SP_VALIDACION_SERVICIO_TIPO
+(
+@tipo_servicio char(55)
+)AS
+BEGIN
+	SELECT   num_medidor, FK_CURP_Cliente, tipo_servicio
+		FROM	Servicio
+		WHERE tipo_servicio = @tipo_servicio;
+		END
+GO
